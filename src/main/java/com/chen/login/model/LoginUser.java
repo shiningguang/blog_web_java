@@ -27,7 +27,9 @@ public class LoginUser extends EntityModel<String>{
 	
 	@Column(name="nickname")
 	private String nickname;
-	
+
+	@Column(name = "qq")
+	private String qq;
 	
 	@Column(name="email")
 	private String email;
@@ -57,6 +59,15 @@ public class LoginUser extends EntityModel<String>{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -66,6 +77,8 @@ public class LoginUser extends EntityModel<String>{
 		builder.append(name);
 		builder.append(", nickname=");
 		builder.append(nickname);
+		builder.append(", qq=");
+		builder.append(qq);
 		builder.append(", email=");
 		builder.append(email);
 		builder.append("}");
