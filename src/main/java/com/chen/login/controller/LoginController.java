@@ -15,5 +15,10 @@ public class LoginController {
 	public String index(HttpServletRequest request, HttpServletResponse response,ModelMap model){
 		return "login/index";
 	}
-	
+
+
+	public static void main(String[] args) {
+		System.out.print("chenshuguang");
+	}
+
 }
