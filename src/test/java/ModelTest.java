@@ -7,6 +7,7 @@
 import java.util.List;
 import com.chen.login.model.LoginUser;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Assert;
@@ -30,18 +31,34 @@ public class ModelTest {
         new SchemaExport(new Configuration().configure()).create(true, true);
     }
 
+    @Test
+    public void testSave() {
+        LoginUser person = new LoginUser();
+        person.setId("100");
+        person.setName("路飞");
+
+        Session session = HibernateUtil.getSession();
+        Transaction tx = session.beginTransaction();
+
+        session.save(person);
+
+        tx.commit();
+        HibernateUtil.closeSession();
+    }
 
     @Test
     public void testQuery() {
+
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
 
         @SuppressWarnings("unchecked")
         List<LoginUser> personList = session.createQuery("select p from LoginUser  p ").list();
 
+        System.err.println(personList.size());
 
         for(LoginUser eachPerson : personList) {
-            System.out.println(eachPerson);
+            System.err.println(eachPerson);
         }
 
         session.getTransaction().commit();
