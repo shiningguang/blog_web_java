@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,11 +17,11 @@ import com.chen.login.model.LoginUser;
 public class LoginUserDaoImplTest {
 
 	@Resource(name = "loginUserDao")
-	private LoginUserDao loginUserDao;
+	public LoginUserDao loginUserDao;
 	
 	@Test
 	public void test() {
-		LoginUser u =loginUserDao.find("1");
+		LoginUser u =loginUserDao.find("chen");
 		System.err.println(u);
 	}
 

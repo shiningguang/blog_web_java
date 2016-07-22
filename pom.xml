@@ -133,6 +133,13 @@
 		<!-- AOP end -->
 
 		<!-- spring data access -->
+
+	  <dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-orm</artifactId>
+		  <version>${spring.version}</version>
+	  </dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -551,7 +558,7 @@
 							<detail>true</detail>
 							<containerConfigXML>svn.info</containerConfigXML>
 							<!-- <webXml>${basedir}/profile/release/web.xml</webXml> -->
-							<warName>kudou</warName>
+							<warName>blog</warName>
 							<warSourceDirectory>${basedir}/src/main/resources/webapp</warSourceDirectory>
 							<outputDirectory>${project.build.directory}/blog</outputDirectory>
 						</configuration>

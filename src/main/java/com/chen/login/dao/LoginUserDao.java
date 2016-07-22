@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.chen.common.db.dao.BaseDAO;
 import com.chen.login.model.LoginUser;
 
-@Repository("loginUserDao")
+
 public interface LoginUserDao extends BaseDAO<LoginUser, String>{
 
 }
