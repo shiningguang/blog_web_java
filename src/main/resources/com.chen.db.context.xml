@@ -14,7 +14,7 @@
 	default-lazy-init="true">
     <!-- 主应用 properties files -->
  	<!--  c3p0 -->
-	<bean id="dataSource" name="message.dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" name="message.dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="initialPoolSize" value="${com.chen.jdbc.pool.init.size}" />
 		<property name="minPoolSize" value="${com.chen.jdbc.pool.init.size}" />
 		<property name="maxPoolSize" value="${com.chen.jdbc.pool.max.size}" />
@@ -67,7 +67,7 @@
 	</tx:advice>
 
 	<aop:config proxy-target-class="true">
-		<aop:advisor pointcut="execution(* com.chen..dao..*.*(..))" advice-ref="txadvice" order="200" />
+		<aop:advisor pointcut="execution(* com.chen..service..*.*(..))" advice-ref="txadvice" order="200" />
 	</aop:config>
 
 	
