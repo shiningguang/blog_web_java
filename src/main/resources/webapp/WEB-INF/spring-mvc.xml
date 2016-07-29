@@ -13,8 +13,6 @@
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan> 
 	
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
-		up static resources in the ${webappRoot}/resources/ directory -->
 	<mvc:resources mapping="/resource/**" location="/resource/" order="1" />
 	<mvc:resources mapping="/static/**" location="/static/" order="1" />
 	

@@ -16,8 +16,10 @@ import com.chen.login.model.LoginUser;
 @ContextConfiguration(locations = { "classpath*:com.chen.context.xml" })
 public class LoginUserDaoImplTest {
 
+
+
 	@Resource(name = "loginUserDao")
-	public LoginUserDao loginUserDao;
+	private  LoginUserDao loginUserDao;
 	
 	@Test
 	public void test() {

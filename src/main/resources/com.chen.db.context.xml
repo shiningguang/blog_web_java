@@ -40,8 +40,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties" value="classpath*:hibernate.properties" />
 		<!-- 指定namedQuery配置文件位置 -->
-		<property name="mappingDirectoryLocations" value="${ctu.hibernate.mappingDirectoryLocations}" />
-		<property name="packagesToScan" value="${ctu.hibernate.packagesToScan}" />
+		<property name="mappingDirectoryLocations" value="${hibernate.mappingDirectoryLocations}" />
+		<property name="packagesToScan" value="${hibernate.packagesToScan}" />
 	</bean>
 	
 
