@@ -427,7 +427,9 @@
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
+					<debug>true</debug>
 					<showWarnings>true</showWarnings>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 
@@ -537,6 +539,8 @@
 
 <profiles>
 
+
+
 		<profile>
 			<id>dev</id>
 			<activation>
@@ -563,11 +567,10 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
-						<version>2.1</version>
+						<version>2.1.1</version>
 						<configuration>
 							<detail>true</detail>
 							<containerConfigXML>svn.info</containerConfigXML>
-							<!-- <webXml>${basedir}/profile/release/web.xml</webXml> -->
 							<warName>blog</warName>
 							<warSourceDirectory>${basedir}/src/main/resources/webapp</warSourceDirectory>
 							<outputDirectory>${project.build.directory}/blog</outputDirectory>
