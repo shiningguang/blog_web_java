@@ -1,5 +1,7 @@
 package com.chen.login.service;
 
+import com.chen.login.model.LoginUser;
+
 /**
  * Author ： chen
  * Date ： 16/7/26
@@ -7,5 +9,6 @@ package com.chen.login.service;
  */
 public interface LoginUserService {
 
+    LoginUser findUserByid(String uid);
 
 }

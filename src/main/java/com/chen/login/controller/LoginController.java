@@ -4,8 +4,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chen.login.dao.LoginUserDao;
 import com.chen.login.model.LoginUser;
+import com.chen.login.service.LoginUserService;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +17,14 @@ public class LoginController {
 
 
 	@Resource
-	private LoginUserDao loginUserDao;
+	LoginUserService loginUserService;
+
+	@Resource(name="mainPropertyConfigurer")
+	PropertyPlaceholderConfigurer configurer;
 
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request, HttpServletResponse response,ModelMap model){
-		LoginUser u = loginUserDao.find("chen");
+		LoginUser u = loginUserService.findUserByid("chen");
 		System.out.print(u);
 		return "login/index";
 	}
