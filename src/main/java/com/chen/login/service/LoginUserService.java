@@ -9,6 +9,16 @@ import com.chen.login.model.LoginUser;
  */
 public interface LoginUserService {
 
+    /**
+     * 根据uid查找用户
+     * @param uid
+     * @return
+     */
     LoginUser findUserByid(String uid);
 
+    /**
+     * 保存注册用户信息
+     * @param registerUser
+     */
+    void save(LoginUser registerUser);
 }

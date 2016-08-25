@@ -18,8 +18,23 @@ public class LoginUserServiceImpl implements LoginUserService {
     @Resource
     private LoginUserDao loginUserDao;
 
+    /**
+     * 根据uid查找用户
+     * @param uid
+     * @return
+     */
     public LoginUser findUserByid(String uid){
         return loginUserDao.find(uid);
+    }
+
+    /**
+     * 保存注册用户信息
+     *
+     * @param registerUser
+     */
+    @Override
+    public void save(LoginUser registerUser) {
+        loginUserDao.save(registerUser);
     }
 
 }
