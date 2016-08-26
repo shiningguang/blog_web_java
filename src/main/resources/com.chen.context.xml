@@ -25,7 +25,8 @@
     </bean>  
 
 	
-	<import resource="com.chen.db.context.xml" />
+	<import resource="com.chen.db.context.xml"/>
+	<import resource="com.chen.mail.xml"/>
 
 
 	<aop:aspectj-autoproxy proxy-target-class="true" />
@@ -34,6 +35,10 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 
-	
+
+
+
+
+
 	
 </beans>
