@@ -1,7 +1,6 @@
 package com.chen.mail;
 
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
