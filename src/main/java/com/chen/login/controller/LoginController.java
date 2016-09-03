@@ -1,11 +1,13 @@
 package com.chen.login.controller;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chen.login.model.LoginUser;
 import com.chen.login.service.LoginUserService;
+import com.chen.mail.MailSender;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +21,8 @@ public class LoginController {
 
 	@Resource
 	LoginUserService loginUserService;
-
+	@Inject
+	MailSender mailSender;
 
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request, HttpServletResponse response,ModelMap model){
@@ -36,6 +39,8 @@ public class LoginController {
 		registerUser.setName(email);
 		registerUser.setEmail(email);
 		loginUserService.save(registerUser);
+		//发送邮件激活，然后才能登陆。如果未激活不能登陆。
+		mailSender.send(registerUser,"",email);
 		return "redirect:/login/index";
 	}
 
