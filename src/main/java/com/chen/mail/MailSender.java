@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-import com.chen.login.model.LoginUser;
+import com.chen.app.common.Constants;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.springframework.core.task.TaskExecutor;
@@ -16,7 +16,6 @@ import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -34,17 +33,15 @@ public class MailSender {
     private FreeMarkerConfigurer freeMarkerConfigurer;
     @Inject
     private TaskExecutor taskExecutor;
+
     /**
-     * 构建邮件内容，发送邮件。
-     * @param user  用户
-     * @param url   链接
+     * 发送邮件
+     * @param email 发送邮件地址
+     * @param map 发送邮件模板
      */
-    public void send(LoginUser user, String url,String email) {
-        String nickname = user.getNickname();
+    public void send(String email,Map<String, String> map) {
         String to = email;
         String text = "";
-        Map<String, String> map = new HashMap<String, String>(1);
-        map.put("url", url);
         try {
 //            从FreeMarker模板生成邮件内容
             Template template = freeMarkerConfigurer.getConfiguration().getTemplate("register_mail.ftl");
@@ -55,7 +52,7 @@ public class MailSender {
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-        this.taskExecutor.execute(new SendMailThread(to,null,text));
+        this.taskExecutor.execute(new SendMailThread(to, Constants.REGISTER_SUBJECT,text));
     }
     //    内部线程类，利用线程池异步发邮件。
     private class SendMailThread implements Runnable {
@@ -73,6 +70,7 @@ public class MailSender {
             sendMail(to, subject, content);
         }
     }
+
     /**
      * 发送邮件
      * @param to        收件人邮箱

@@ -1,12 +1,9 @@
 package com.chen.login.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.chen.common.db.model.EntityModel;
-
+import org.hibernate.annotations.GenericGenerator;
 
 
 @Entity
@@ -19,6 +16,8 @@ public class LoginUser extends EntityModel<String>{
 	private static final long serialVersionUID = 7645817301567868145L;
 	
 	@Id
+	@GenericGenerator(name = "idGenerator", strategy = "uuid")
+	@GeneratedValue(generator = "idGenerator")
 	@Column(length = 40)
 	private String id;
 	

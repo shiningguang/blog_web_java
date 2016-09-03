@@ -28,13 +28,23 @@ public class LoginUserServiceImpl implements LoginUserService {
     }
 
     /**
-     * 保存注册用户信息
+     * 更新注册用户信息
      *
      * @param registerUser
      */
     @Override
     public void save(LoginUser registerUser) {
         loginUserDao.save(registerUser);
+    }
+
+    /**
+     * 保存注册用户信息
+     *
+     * @param registerUser
+     */
+    @Override
+    public String insert(LoginUser registerUser) {
+        return loginUserDao.insert(registerUser);
     }
 
 }

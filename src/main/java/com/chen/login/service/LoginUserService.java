@@ -21,4 +21,11 @@ public interface LoginUserService {
      * @param registerUser
      */
     void save(LoginUser registerUser);
+
+    /**
+     * 插入user信息
+     * @param user
+     * @return
+     */
+    String insert(LoginUser user);
 }
