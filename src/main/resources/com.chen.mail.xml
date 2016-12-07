@@ -25,9 +25,9 @@
               </property>
        </bean>
        <bean id="simpleMailMessage" class="org.springframework.mail.SimpleMailMessage">
-              <property name="from" value="发件人" />
-              <property name="subject" value="邮件主题" />
+              <property name="from" value="${com.chen.email.username}" />
               <!--
+              <property name="subject" value="邮件主题" />
               <property name="text" value="邮件内容" />
               -->
        </bean>
